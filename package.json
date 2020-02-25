@@ -1,0 +1,33 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "node server for shop app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm app.js",
+    "startCallback": "nodemon -r esm callbacks.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/candacecantrell/node-server.git"
+  },
+  "author": "Candace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/candacecantrell/node-server/issues"
+  },
+  "homepage": "https://github.com/candacecantrell/node-server#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "eslint": "^6.8.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "mongoose": "^5.9.2",
+    "monk": "^7.1.2",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}
