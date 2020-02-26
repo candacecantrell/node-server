@@ -9,29 +9,28 @@ export const postAddProduct = (req, res, next) => {
     })
     product
     .save()
-    // .then(result => {
-    //     console.log('new product added')
-    //    res.send('new product check db')
-    // )}
-    .catch(err => console.log(err))
-    product.fetchAll()
-.then(product => {
-    res.json(product)
-})
+    .then(result => {
+      console.log('Created Product')
+      res.send('Created Product.  Check your DB')
+      //res.redirect('/admin/products')
+    })
+    .catch(err => {
+      console.error(err)
+    })
 }
 
 
 export const getAllProducts = (req, res, next) => {
     Product.find()
-    .then (product => {
-        res.json(product)
+    .then (products => {
+        res.json(products)
         })
         .catch(err => console.log(err))
     }
 
     export const getProductById = (req, res, next) => {
-        const productId = req.body.productId
-        console.log(productId)
+        const prodId = req.body.productId
+        console.log(prodId)
         .then(product => {
             if(!product) {
                 return res.redirect('/')
@@ -42,12 +41,12 @@ export const getAllProducts = (req, res, next) => {
     }
 
     export const postEditProduct = (req, res, next) => {
-        const productId = res.body.productId
+        const prodId = res.body.productId
         const updatedTitle = req.body.title
         const updatedPrice = req.body.price
         const updatedDesc = req.body.description
         const updatedImg = req.body.image
-        Product.findById(productId)
+        Product.findById(prodId)
         .then(product => {
             product.title = updatedTitle
             product.price = updatedPrice
@@ -60,6 +59,7 @@ export const getAllProducts = (req, res, next) => {
         .then(result => {
             res.redirect('/admin/getAllProducts')
         })
+        .catch(err => console.log(err))
     }
 
     export const postDeleteProduct = (req, res, next) => {

@@ -1,13 +1,23 @@
-[{
-    "title": "Legend",
-    "price": "22.03",
-    "image": "/image.jpg",
-    "description": "some funky music by bob marley"
-},
-{
-    "title": "When We All Fall Asleep, Where Do We Go",
-    "price": "19.00",
-    "image": "/image.jpg",
-    "description": "pop music by Billie Eilish"
-},
-]
+
+import mongodb from 'mongodb'
+const MongoClient = mongodb.MongoClient
+
+let _db
+
+export const mongoConnect = (callback) => {
+MongoClient.connect('mongodb+srv://someuser:abcd1234@tinyhousecluster-opg2q.mongodb.net/test?retryWrites=true&w=majority').then(client => {
+    console.log('Connected')
+    _db = client.db()
+    callback()
+}).catch(err => {
+    console.log(err)
+    throw err
+})
+}
+
+export const getDb = () => {
+    if (_db) {
+        return _db
+    }
+    throw 'No database found!'
+}
