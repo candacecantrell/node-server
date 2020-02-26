@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -r esm app.js",
-    "startCallback": "nodemon -r esm callbacks.js"
+    "callback": "nodemon -r esm callbacks.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
+    "mongodb": "^3.5.4",
     "mongoose": "^5.9.2",
     "monk": "^7.1.2",
     "nodemon": "^2.0.2",

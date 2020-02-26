@@ -5,7 +5,10 @@ const MongoClient = mongodb.MongoClient
 let _db
 
 export const mongoConnect = (callback) => {
-MongoClient.connect('mongodb+srv://someuser:abcd1234@tinyhousecluster-opg2q.mongodb.net/test?retryWrites=true&w=majority').then(client => {
+MongoClient.connect('mongodb+srv://candace55:zxcv1234@cc-database-duvx8.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(client => {
     console.log('Connected')
     _db = client.db()
     callback()
