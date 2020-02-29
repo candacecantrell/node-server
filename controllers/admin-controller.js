@@ -1,78 +1,78 @@
-import { Product } from '../models/product'
+import { Vinyl } from '../models/product'
 
+// create
 export const postAddProduct = (req, res, next) => {
-    const product = new Product({
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      imageUrl: req.body.imageUrl,
-      artist: req.body.artist
+  const vinyl = new Vinyl({
+    title: req.body.title,
+    price: req.body.price,
+    description: req.body.description,
+    imageUrl: req.body.imageUrl,
+    artist: req.body.artist,
+  })
+  vinyl
+    .save()
+    .then(result => {
+      console.log('Created Product')
+      res.send('Created Product! Check your DB')
+      // res.redirect('/admin/products')
     })
-    product
-      .save()
-      .then(result => {
-        console.log('Created Product')
-        res.send('Created Product.  Check your DB')
-        //res.redirect('/admin/products')
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
-  
-  export const getAllProducts = (req, res, next) => {
-    Product.find()
-      .then(products => {
-        res.json(products)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  // read one
-  export const getProductById = (req, res, next) => {
-    const prodId = req.body.productId
-    Product.findById(prodId)
-    .then(product => {
-      if (!product) {
+    .catch(err => console.log(err))
+}
+
+ export const getAllProducts = (req, res, next) => {
+  Vinyl.find()
+    .then(products => {
+      res.json(products)
+    })
+    .catch(err => console.log(err))
+}
+
+
+// read one
+export const getProductById = (req, res, next) => {
+  const prodId = req.body.productId
+  console.log(prodId)
+  Vinyl.findById(prodId)
+    .then(vinyl => {
+      if (!vinyl) {
         return res.redirect('/')
       }
-      res.json(product)
+      res.json(vinyl)
     })
     .catch(err => console.log(err))
-  }
+}
+
+// update
+export const postEditProduct = (req, res, next) => {
+  const prodId = req.body.productId
+  const updatedTitle = req.body.title
+  const updatedPrice = req.body.price
+  const updatedDesc = req.body.description
+  const updatedImageUrl = req.body.imageUrl
   
-  // update
-  export const postEditProduct = (req, res, next) => {
-    const prodId = req.body.productId
-    const updatedTitle = req.body.title
-    const updatedPrice = req.body.price
-    const updatedDesc = req.body.description
-    const updatedImageUrl = req.body.imageUrl
-    const updatedArtist = req.body.artist
-  
-    Product.findById(prodId)
-    .then(product => {
-      product.title = updatedTitle
-      product.price = updatedPrice
-      product.description = updatedDesc
-      product.imageUrl = updatedImageUrl
-      product.artist = updatedArtist
-      return product.save()
-    })
+  Vinyl.findById(prodId)
+  .then(vinyl => {
+    vinyl.title = updatedTitle
+    vinyl.price = updatedPrice
+    vinyl.description = updatedDesc
+    vinyl.imageUrl = updatedImageUrl
+    return vinyl.save()
+  })
     .then(result => {
-      console.log('Updated Product')
+      console.log('Updated product')
       res.redirect('/admin/getAllProducts')
     })
     .catch(err => console.log(err))
-  }
-  
-  export const postDeleteProduct = (req, res, next) => {
+}
+
+// delete
+
+export const postDeleteProduct = ( req, res, next) => {
     const prodId = req.body.productId
-    Product.findByIdAndRemove(prodId)
+    Vinyl.findByIdAndRemove(prodId)
     .then(() => {
-      console.log('Deleted Product')
-      res.redirect('/admin/getAllProducts')
+        console.log('Deleted the product')
+        res.redirect('/shop/shop-products')
     })
     .catch(err => console.log(err))
-  }
+} 

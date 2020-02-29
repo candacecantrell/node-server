@@ -1,21 +1,23 @@
+
 import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const productSchema = new Schema({
+const vinylSchema  = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
         required: true
     },
-    imageUrl: {
+    description: {
         type: String,
         required: true
     },
-    description: {
+    imageUrl: {
         type: String,
         required: true
     },
@@ -25,4 +27,12 @@ const productSchema = new Schema({
     }
 })
 
-export const Product = mongoose.model('Product', productSchema)
+// const productSchema = new Schema({
+//     title: String,
+//     prict: Number,
+//     description: String,
+//     imageUrl: String,
+//     artist: String
+//   })
+
+export const Vinyl = mongoose.model('Vinyl', vinylSchema)

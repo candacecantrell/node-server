@@ -4,7 +4,6 @@ import mongoose from 'mongoose'
 
 import { productRouter } from './routes/admin-route'
 
-//import { getDB } from './util/database'
 const app = express()
 
 app.use(
@@ -12,16 +11,9 @@ app.use(
       limit: '5mb',
       extended: false,
     })
-  )
+  ),
 
 app.use('/shop', productRouter)
-
-app.use('/api', function(req, res, next) {
-    //console.log(req)
-    console.log(`A new request was received at ${new Date().toLocaleString()}`)
-    res.send(`Thanks for hitting my api`)
-    next()
-  })
 
 let port = process.env.PORT
 if (port == null || port == '') {
@@ -29,8 +21,8 @@ if (port == null || port == '') {
 } 
 
 mongoose.connect(
-    `mongodb+srv://candace55:zxcv1234@cc-database-duvx8.mongodb.net/test?retryWrites=true&w=majority`,
-    { useUnifiedTopology: true }
+    `mongodb+srv://candace55:zxcv1234@cc-database-duvx8.mongodb.net/shop?retryWrites=true&w=majority`,
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 )
 .then(result => {
     app.listen(port, () => {
