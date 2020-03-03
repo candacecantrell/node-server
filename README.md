@@ -28,5 +28,5 @@
 
 **All of your source code will be properly uploaded to GitHub**
 
-[Github Repo](https://github.com/candacecantrell/node-server)
+[Github Repo: node-server](https://github.com/candacecantrell/node-server)
 
