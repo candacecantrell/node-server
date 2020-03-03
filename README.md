@@ -4,19 +4,19 @@
 
 [get: shop/product-id](https://gentle-tundra-60449.herokuapp.com/shop/product-id)
 
-[get: shop/getallproducts](https://gentle-tundra-60449.herokuapp.com/shop/shop-products)
+[get: shop/shop-products](https://gentle-tundra-60449.herokuapp.com/shop/shop-products)
 
 **At least 1 endpoint allowing user to update an item via PUT or PATCH HTTP**
 
-[put: product-edit](https://gentle-tundra-60449.herokuapp.com/shop/product/edit)
+[put: shop/product-edit](https://gentle-tundra-60449.herokuapp.com/shop/product/edit)
 
 **At least 1 endpoint allowing user to create an item via POST**
 
-[post: add-product](https://gentle-tundra-60449.herokuapp.com/shop/add-product)
+[post: shop/add-product](https://gentle-tundra-60449.herokuapp.com/shop/add-product)
 
 **At least 1 endpoint allowing user to delete an item via DELETE**
 
-[product-delete](https://github.com/candacecantrell/node-server/blob/master/routes/admin-route.js)
+[Delete: shop/product-delete](https://github.com/candacecantrell/node-server/blob/master/routes/admin-route.js)
 
 **Your datastore will contain at least 25 items**
 
