@@ -8,5 +8,5 @@ productRouter.get('/shop-products', getAllProducts)
 productRouter.post('/add-product', postAddProduct)
 
 productRouter.get('/product-id', getProductById)
-productRouter.post('/product-edit', postEditProduct)
+productRouter.put('/product-edit', postEditProduct)
 productRouter.post('/product-delete', postDeleteProduct)
