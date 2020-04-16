@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 import { productRouter } from './routes/admin-route'
 
@@ -12,6 +13,10 @@ app.use(
       extended: false,
     })
   ),
+// app.use(bodyParser.json());
+//   app.use(cors({
+//     origin: '*'
+//   }))
 
 app.use('/shop', productRouter)
 

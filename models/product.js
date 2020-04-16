@@ -17,10 +17,10 @@ const vinylSchema  = new Schema({
         type: String,
         required: true
     },
-    imageUrl: {
-        type: String,
-        required: true
-    },
+    // imageUrl: {
+    //     type: String,
+    //     required: true
+    // },
     artist: {
         type: String,
         required: true

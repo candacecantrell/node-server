@@ -6,6 +6,8 @@
 
 [get: shop/shop-products](https://gentle-tundra-60449.herokuapp.com/shop/shop-products)
 
+
+
 **At least 1 endpoint allowing user to update an item via PUT or PATCH HTTP**
 
 [put: shop/product-edit](https://gentle-tundra-60449.herokuapp.com/shop/product/edit)

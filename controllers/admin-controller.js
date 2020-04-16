@@ -6,7 +6,7 @@ export const postAddProduct = (req, res, next) => {
     title: req.body.title,
     price: req.body.price,
     description: req.body.description,
-    imageUrl: req.body.imageUrl,
+    //imageUrl: req.body.imageUrl,
     artist: req.body.artist,
   })
   vinyl
@@ -48,19 +48,21 @@ export const postEditProduct = (req, res, next) => {
   const updatedTitle = req.body.title
   const updatedPrice = req.body.price
   const updatedDesc = req.body.description
-  const updatedImageUrl = req.body.imageUrl
+  const updatedArt = req.body.artist 
+  //const updatedImageUrl = req.body.imageUrl
   
   Vinyl.findById(prodId)
   .then(vinyl => {
     vinyl.title = updatedTitle
     vinyl.price = updatedPrice
     vinyl.description = updatedDesc
-    vinyl.imageUrl = updatedImageUrl
+    vinyl.artist = updatedArt
+    //vinyl.imageUrl = updatedImageUrl
     return vinyl.save()
   })
     .then(result => {
       console.log('Updated product')
-      res.redirect('/admin/getAllProducts')
+      res.redirect('/shop/getAllProducts')
     })
     .catch(err => console.log(err))
 }
@@ -76,3 +78,16 @@ export const postDeleteProduct = ( req, res, next) => {
     })
     .catch(err => console.log(err))
 } 
+
+export const getByGenre = (req, res, next) => {
+  const vinylGenres = req.body.description
+  Vinyl.find(vinylGenres)
+  .then(vinyl => {
+    vinyl = vinylGenres
+    return vinyl.save()
+  })
+    .then(result => {
+      console.log(vinyl)
+    })
+  .catch(err => console.log(err))
+}
